@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(configureCell: { (ds, tv,ip, item) -> SessionCell in
             let cell : SessionCell = tv.dequeueReusableCell(withIdentifier: "SessionCell", for: ip) as! SessionCell
             if let aSessionDict : [String : AnyObject] = item {
-                    let eachSession = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String)
+                    let eachSession = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String , email: aSessionDict["OwnerEmail"] as? String , phone: aSessionDict["OwnerContactNumber"] as? String)
 
                     cell.setModel(eachSession)
                 }

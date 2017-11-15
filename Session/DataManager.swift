@@ -128,10 +128,14 @@ struct Session {
     var isonGoing = false
     var email = ""
     var phone = ""
+    var opportunityName = ""
+    var lead = ""
+    var primaryContact = ""
+    var description = ""
     var invitees = [Invitee]()
 
     
-    init(subject : String? ,owner : String? ,accountName : String? , location : String?, activityStartDate: String? , activityEndDate: String?, email: String? , phone: String? , invitees : [Invitee]?) {
+    init(subject : String? ,owner : String? ,accountName : String? , location : String?, activityStartDate: String? , activityEndDate: String?, email: String? , phone: String? , invitees : [Invitee]?  , opportunityName: String? , lead: String? , primaryContact: String? , description: String?) {
         self.subject = subject ?? "";
         self.activityStartDate = activityStartDate ?? "";
         self.activityEndDate = activityEndDate ?? "";
@@ -140,6 +144,11 @@ struct Session {
         self.location = location ?? "";
         self.email = email ?? ""
         self.phone = phone ?? ""
+        self.opportunityName = opportunityName ?? ""
+        self.lead = lead ?? ""
+        self.primaryContact = primaryContact ?? ""
+        self.description = description ?? ""
+
         self.invitees = invitees ?? []
         
         let dateFormatter = DateFormatter()

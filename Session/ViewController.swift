@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             let cell : SessionCell = tv.dequeueReusableCell(withIdentifier: "SessionCell", for: ip) as! SessionCell
             if let aSessionDict : [String : AnyObject] = item {
                     let eachSession = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String , email: aSessionDict["OwnerEmail"] as? String , phone: aSessionDict["OwnerContactNumber"] as? String ,invitees :
-                        aSessionDict["invitees"] as? [Invitee])
+                        aSessionDict["invitees"] as? [Invitee] , opportunityName: aSessionDict["OpportunityName"] as? String , lead:aSessionDict["LeadName"] as? String , primaryContact:aSessionDict["PrimaryContactName"] as? String , description: aSessionDict["Description"] as? String)
 
                     cell.setModel(eachSession)
                 }
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
                 let section =  DataManager.sharedInstance.sections[indexPath.section]
                 let aSessionDict = section.items [indexPath.row]
                 let session = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String , email: aSessionDict["OwnerEmail"] as? String , phone: aSessionDict["OwnerContactNumber"] as? String ,invitees :
-                    aSessionDict["invitees"] as? [Invitee])
+                    aSessionDict["invitees"] as? [Invitee] , opportunityName: aSessionDict["OpportunityName"] as? String , lead:aSessionDict["LeadName"] as? String , primaryContact:aSessionDict["PrimaryContactName"] as? String , description: aSessionDict["Description"] as? String)
                 DataManager.sharedInstance.selectedSession = session
                 
             }).disposed(by: disposalBg)

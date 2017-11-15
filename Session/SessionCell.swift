@@ -10,25 +10,28 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol DisplayableSession{
-    var activityStartDate :String? {get set}
+
+struct Session {
+    var activityStartDate = ""
+    var activityEndDate = ""
+    var subject = ""
+    var owner = ""
+    var accoountName = ""
+    var location = ""
     
+    init(subject : String? ,owner : String? ,accountName : String? , location : String?, activityStartDate: String? , activityEndDate: String?) {
+        self.subject = subject ?? "";
+        self.activityStartDate = activityStartDate ?? "";
+        self.activityEndDate = activityEndDate ?? "";
+        self.owner = owner ?? "";
+        self.accoountName = accoountName ?? "";
+        self.location = location ?? "";
+
+    }
+ 
+  
 }
 
-extension DisplayableSession{
-    var shorttimeStr : String { return "M" }
-    var amOpm  : String { return  "AM" }
-    var shortAC : String {return "KL" }
-}
-
-struct Session : DisplayableSession{
-    var activityStartDate: String?
-    var subject : String?
-    var owner : String?
-    var accoountName : String?
-    var location : String?
-    
-}
 
 
 
@@ -43,8 +46,9 @@ class SessionCell : UITableViewCell {
     @IBOutlet weak var subjectLbl: UILabel!
     
     func setModel(_ session: Session){
-        self.activityStartDateLbl.text = session.shorttimeStr
-        self.sortAccountNameLbl.text = session.shortAC
+        let dict = session.activityStartDate.shortTime()
+        self.activityStartDateLbl.text = "\(dict["hour"]!) : \(dict["minute"]!) \n \(dict["xo"]!)"
+        self.sortAccountNameLbl.text = session.accoountName
         self.accountNameLbl.text = session.accoountName
         self.locationLbl.text = session.location
         self.subjectLbl.text = session.subject

@@ -14,6 +14,9 @@ import RxSwift
 class DataManager{
     static let sharedInstance = DataManager()
     var jsonData =  Variable([[String : AnyObject]]())
+    var dayRecords = Variable([String]())
+     let disposalBag = DisposeBag()
+    var dataSource = [String : AnyObject]()
     
     func loadData(){
         if let path = Bundle.main.path(forResource: "JsonData", ofType: "json")
@@ -31,16 +34,25 @@ class DataManager{
                         }
                         return false
                     })
+                    
+                    dataSource = sortedSessions.map({ dic -> [String : AnyObject]? in
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                        if let date1 : String = dic["ActivityStartDate"] as? String   {
+                            let date = date1.shortTime()["date"]!
+                            return [date1 : dic as AnyObject]
+                        }
+                        return nil
+                    })
                     jsonData.value = sortedSessions
                 }
             } catch let e as NSError {
                 print(e.localizedDescription)
                 // handle error
             }
-            
-            
-         
+
         }
 
     }
+   
 }

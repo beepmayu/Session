@@ -1,22 +1,30 @@
 PODS:
+  - Differentiator (3.0.2)
   - Eureka (4.0.1)
   - ImageRow (3.0.0):
     - Eureka (~> 4.0)
   - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.0.0)
 
 DEPENDENCIES:
   - ImageRow (~> 3.0)
   - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
 
 SPEC CHECKSUMS:
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
   ImageRow: 048123c296de9a6ac3998c415a6706c45ce480af
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
 
-PODFILE CHECKSUM: 4d32622cc2cb49360a81de8d4a923c8bd86d85fd
+PODFILE CHECKSUM: ce9546b80d5278ea11c5cc0aef1796b504072537
 
 COCOAPODS: 1.3.1

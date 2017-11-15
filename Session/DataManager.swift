@@ -12,6 +12,8 @@ import RxDataSources
 
 
 typealias Item = [String : AnyObject]
+typealias Invitee = [String : AnyObject]
+typealias InviteeName = String
 
 struct SectionOfSessionsData {
     var header: String
@@ -33,6 +35,7 @@ class DataManager{
     var sections = [SectionOfSessionsData]()
     var selectedSession : Session?
 
+    var defaultedInvitees = [Invitee]()
     
     private var collection = [String : [[String : AnyObject]]]()
     
@@ -42,6 +45,8 @@ class DataManager{
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+             
+                
                 if let jsonResult1 = jsonResult as? Dictionary<String, AnyObject>, let sessions = jsonResult1["Sessions"] as? [[String : AnyObject]] {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -84,11 +89,27 @@ class DataManager{
                     }
 
                 }
+                
+          
             } catch let e as NSError {
                 print(e.localizedDescription)
                 // handle error
             }
 
+        }
+        if let pathInvitee = Bundle.main.path(forResource: "JsonDataInvitees", ofType: "json"){
+            do {
+
+            let dataInvitee = try Data(contentsOf: URL(fileURLWithPath: pathInvitee), options: .alwaysMapped)
+            let jsonResultInvitee = try JSONSerialization.jsonObject(with: dataInvitee, options: .mutableContainers)
+            
+            if let jsonResult1 = jsonResultInvitee as? Dictionary<String, AnyObject>, let invitees = jsonResult1["invitees"] as? [Invitee] {
+                self.defaultedInvitees = invitees
+                print(invitees)
+            }
+            }catch {
+                
+            }
         }
 
     }
@@ -107,7 +128,10 @@ struct Session {
     var isonGoing = false
     var email = ""
     var phone = ""
-    init(subject : String? ,owner : String? ,accountName : String? , location : String?, activityStartDate: String? , activityEndDate: String?, email: String? , phone: String?) {
+    var invitees = [Invitee]()
+
+    
+    init(subject : String? ,owner : String? ,accountName : String? , location : String?, activityStartDate: String? , activityEndDate: String?, email: String? , phone: String? , invitees : [Invitee]?) {
         self.subject = subject ?? "";
         self.activityStartDate = activityStartDate ?? "";
         self.activityEndDate = activityEndDate ?? "";
@@ -116,6 +140,7 @@ struct Session {
         self.location = location ?? "";
         self.email = email ?? ""
         self.phone = phone ?? ""
+        self.invitees = invitees ?? []
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"

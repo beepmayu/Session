@@ -1,5 +1,5 @@
 //
-//  DetailsViewController.swift
+//  DetailsOptionViewController.swift
 //  Session
 //
 //  Created by Mayu on 15/11/17.
@@ -7,18 +7,16 @@
 //
 
 import Foundation
+import  UIKit
 import  Eureka
 
-typealias Emoji = String
-
-
-class DetailsViewController : FormViewController {
+class InviteesOptionViewController : FormViewController{
     
     override func viewDidLoad() {
         print("loaded view")
         super.viewDidLoad()
         loadInputDisplay()
-     
+        
         navigationOptions = RowNavigationOptions.Enabled.union(.StopDisabledRow)
         // Enables smooth scrolling on navigation to off-screen rows
         animateScroll = true
@@ -52,7 +50,7 @@ class DetailsViewController : FormViewController {
                 row.value = selectedSession.subject
                 row.placeholder = "Enter text here"
             }
-         
+            
             <<< DateRow(){
                 $0.title = "Start"
                 $0.value = dateFormatter.date(from: selectedSession.activityStartDate)
@@ -87,25 +85,8 @@ class DetailsViewController : FormViewController {
                 row.title = "Description"
                 row.placeholder = "Enter text here"
             }
-            
-            +++ Section("Invitees")
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.title = "Invitees"
-                $0.options = DataManager.sharedInstance.defaultedInvitees
-                    .map{ invitee -> String in
-                        return invitee["name"] as? String ??  ""
-                }
-                let values : [String] = selectedSession.invitees
-                    .map({ invitee -> String in
-                        return invitee["name"] as? String ??  ""
-                        
-                    })
-                
-                let objectSet = Set(values.map { $0 })
-                $0.value = objectSet
-                
-                }
+
+        
         
         
         

@@ -19,6 +19,8 @@
 		66ECE4AE1FBA90940064EDE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66ECE4AD1FBA90940064EDE6 /* Assets.xcassets */; };
 		66ECE4B11FBA90940064EDE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ECE4AF1FBA90940064EDE6 /* LaunchScreen.storyboard */; };
 		66F44ABB1FBB1FF0005F5217 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F44ABA1FBB1FF0005F5217 /* Helper.swift */; };
+		66F44ABF1FBC7E65005F5217 /* InviteesOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F44ABE1FBC7E65005F5217 /* InviteesOptionViewController.swift */; };
+		66F44AC11FBC9C1B005F5217 /* JsonDataInvitees.json in Resources */ = {isa = PBXBuildFile; fileRef = 66F44AC01FBC939A005F5217 /* JsonDataInvitees.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		66ECE4B01FBA90940064EDE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66ECE4B21FBA90940064EDE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66F44ABA1FBB1FF0005F5217 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		66F44ABE1FBC7E65005F5217 /* InviteesOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteesOptionViewController.swift; sourceTree = "<group>"; };
+		66F44AC01FBC939A005F5217 /* JsonDataInvitees.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonDataInvitees.json; sourceTree = "<group>"; };
 		BC7DF9425EF06C538EFDB944 /* Pods-Session.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Session.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Session/Pods-Session.debug.xcconfig"; sourceTree = "<group>"; };
 		DFFCC9F0F3ABCB6D941BB4C5 /* Pods_Session.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Session.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 		66ECE4A51FBA90940064EDE6 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				66F44AC01FBC939A005F5217 /* JsonDataInvitees.json */,
 				66336C621FBAC1110054EA4A /* JsonData.json */,
 				66F44ABA1FBB1FF0005F5217 /* Helper.swift */,
 				66ECE4A61FBA90940064EDE6 /* AppDelegate.swift */,
@@ -94,6 +99,7 @@
 				66E205391FBAA63500F8BA05 /* SessionCell.swift */,
 				66336C5E1FBABF4D0054EA4A /* DataManager.swift */,
 				663675421FBC2E0000583C1C /* DetailsViewController.swift */,
+				66F44ABE1FBC7E65005F5217 /* InviteesOptionViewController.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F44AC11FBC9C1B005F5217 /* JsonDataInvitees.json in Resources */,
 				66ECE4B11FBA90940064EDE6 /* LaunchScreen.storyboard in Resources */,
 				66E205381FBA9CD600F8BA05 /* empty-circle.png in Resources */,
 				66ECE4AE1FBA90940064EDE6 /* Assets.xcassets in Resources */,
@@ -248,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66ECE4A91FBA90940064EDE6 /* ViewController.swift in Sources */,
+				66F44ABF1FBC7E65005F5217 /* InviteesOptionViewController.swift in Sources */,
 				66336C5F1FBABF4D0054EA4A /* DataManager.swift in Sources */,
 				66F44ABB1FBB1FF0005F5217 /* Helper.swift in Sources */,
 				66ECE4A71FBA90940064EDE6 /* AppDelegate.swift in Sources */,

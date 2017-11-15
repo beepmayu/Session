@@ -92,13 +92,13 @@
                                                                 <constraint firstAttribute="width" constant="40" id="wQx-f7-3y6"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7E-tt-bwr">
-                                                            <rect key="frame" x="15" y="27.5" width="30" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7E-tt-bwr">
+                                                            <rect key="frame" x="15" y="27.5" width="25" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="11U-BS-1Ao"/>
                                                                 <constraint firstAttribute="height" constant="30" id="Qb7-rY-Bv7"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -118,14 +118,14 @@
                                                                 <constraint firstAttribute="width" constant="195" id="JU1-fq-Qho"/>
                                                                 <constraint firstAttribute="height" constant="20" id="UrK-Xx-H1H"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="7e9-7z-a3R" firstAttribute="top" secondItem="24V-C7-Da0" secondAttribute="top" constant="20" id="3hF-g4-EBZ"/>
+                                                        <constraint firstItem="7e9-7z-a3R" firstAttribute="top" secondItem="24V-C7-Da0" secondAttribute="top" constant="10" id="3hF-g4-EBZ"/>
                                                         <constraint firstItem="bLH-WI-8yz" firstAttribute="leading" secondItem="24V-C7-Da0" secondAttribute="leading" constant="10" id="9Vj-9K-BvZ"/>
                                                         <constraint firstItem="O7E-tt-bwr" firstAttribute="centerX" secondItem="bLH-WI-8yz" secondAttribute="centerX" id="Ail-tw-upg"/>
                                                         <constraint firstItem="Eql-4z-pZw" firstAttribute="top" secondItem="7e9-7z-a3R" secondAttribute="bottom" constant="5" id="LhP-zB-z7e"/>

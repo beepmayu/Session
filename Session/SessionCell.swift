@@ -24,7 +24,7 @@ struct Session {
         self.activityStartDate = activityStartDate ?? "";
         self.activityEndDate = activityEndDate ?? "";
         self.owner = owner ?? "";
-        self.accoountName = accoountName ?? "";
+        self.accoountName = accountName ?? "";
         self.location = location ?? "";
 
     }
@@ -45,10 +45,16 @@ class SessionCell : UITableViewCell {
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var subjectLbl: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
+    }
+    
     func setModel(_ session: Session){
         let dict = session.activityStartDate.shortTime()
         self.activityStartDateLbl.text = "\(dict["hour"]!) : \(dict["minute"]!) \n \(dict["xo"]!)"
-        self.sortAccountNameLbl.text = session.accoountName
+        self.sortAccountNameLbl.text = session.owner.sortName()
         self.accountNameLbl.text = session.accoountName
         self.locationLbl.text = session.location
         self.subjectLbl.text = session.subject

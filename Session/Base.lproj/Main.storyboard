@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGd-bs-I5l">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,11 +23,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.92156862745098034" green="0.91764705882352937" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="150" id="rM3-W2-G6G" customClass="SessionCell" customModule="Session" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="150" id="rM3-W2-G6G" customClass="SessionCell" customModule="Session" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rM3-W2-G6G" id="qde-5c-YPK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCF-Up-31T" userLabel="View1">
@@ -53,7 +53,7 @@
                                                     <rect key="frame" x="80" y="0.0" width="295" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Great Workout Apps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-2T-Y1S">
-                                                            <rect key="frame" x="10" y="10" width="275" height="20"/>
+                                                            <rect key="frame" x="10" y="10" width="242" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Ghb-mp-ErS"/>
                                                             </constraints>
@@ -84,7 +84,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24V-C7-Da0" userLabel="View3">
-                                                    <rect key="frame" x="80" y="75" width="295" height="75"/>
+                                                    <rect key="frame" x="80" y="75" width="262" height="75"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57c-4L-yG3">
                                                             <rect key="frame" x="10" y="7" width="40" height="40"/>
@@ -153,6 +153,7 @@
                                             <outlet property="view1" destination="xCF-Up-31T" id="f8T-no-Yrs"/>
                                             <outlet property="view2" destination="GoW-hl-Ib5" id="9w3-dq-7Zb"/>
                                             <outlet property="view3" destination="24V-C7-Da0" id="laZ-fa-JjN"/>
+                                            <segue destination="Isp-nF-cYa" kind="push" identifier="goDetails" id="MYW-Wv-MPP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -167,6 +168,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QVw-4v-wpO"/>
                     <connections>
                         <outlet property="sessionTw" destination="Fi3-z0-ssW" id="zhu-Eg-bcd"/>
                     </connections>
@@ -174,6 +176,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="124.58770614692655"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tZC-xN-8yO">
+            <objects>
+                <navigationController id="CGd-bs-I5l" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6fy-Is-ZkA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ePM-VU-9AL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eiv-zz-FsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="-896"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="3A1-SE-rkL">
+            <objects>
+                <viewController id="Isp-nF-cYa" customClass="DetailsViewController" customModule="Session" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dab-RG-sob">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Ot9-eU-ns6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ah8-Xv-jap"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7p-x4-lxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1154" y="-322"/>
         </scene>
     </scenes>
     <resources>

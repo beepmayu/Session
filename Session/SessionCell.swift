@@ -55,6 +55,7 @@ class SessionCell : UITableViewCell  {
         contentView.layer.borderWidth = 2.0
         contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
         self.selectionStyle = .none
+        self.accessoryType = .none
     }
     
     func setModel(_ session: Session){
@@ -76,6 +77,7 @@ class SessionCell : UITableViewCell  {
         }
         
         self.sortAccountNameBtn.rx.tap
+            .debounce(1.0, scheduler: MainScheduler.instance)
             .subscribe({ [unowned self] _ in
                 let alert: UIAlertView = UIAlertView(title: "Proceed to call/email/sms", message: "\(self.session.email) & \(self.session.phone)", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()

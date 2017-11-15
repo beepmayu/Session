@@ -13,14 +13,14 @@ import RxDataSources
 
 typealias Item = [String : AnyObject]
 
-struct SectionOfCustomData {
+struct SectionOfSessionsData {
     var header: String
     var items: [Item]
 }
 
-extension SectionOfCustomData: SectionModelType {
+extension SectionOfSessionsData: SectionModelType {
     
-    init(original: SectionOfCustomData, items: [Item]) {
+    init(original: SectionOfSessionsData, items: [Item]) {
         self = original
         self.items = items
     }
@@ -28,10 +28,13 @@ extension SectionOfCustomData: SectionModelType {
 
 class DataManager{
     static let sharedInstance = DataManager()
-     let disposalBag = DisposeBag()
+    private let disposalBag = DisposeBag()
     
-    var sections = [SectionOfCustomData]()
-    var collection = [String : [[String : AnyObject]]]()
+    var sections = [SectionOfSessionsData]()
+    var selectedSession : Session?
+
+    
+    private var collection = [String : [[String : AnyObject]]]()
     
     func loadData(){
         if let path = Bundle.main.path(forResource: "JsonData", ofType: "json")
@@ -76,7 +79,7 @@ class DataManager{
                         return first < second
                     })
                     for (key,value) in newCollection{
-                        let eachSection = SectionOfCustomData(header: key.sectionDate(), items:value)
+                        let eachSection = SectionOfSessionsData(header: key.sectionDate(), items:value)
                         sections.append(eachSection)
                     }
 

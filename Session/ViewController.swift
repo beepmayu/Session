@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 
         self.sessionTw.separatorStyle = .none
 
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(configureCell: { (ds, tv,ip, item) -> SessionCell in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfSessionsData>(configureCell: { (ds, tv,ip, item) -> SessionCell in
             let cell : SessionCell = tv.dequeueReusableCell(withIdentifier: "SessionCell", for: ip) as! SessionCell
             if let aSessionDict : [String : AnyObject] = item {
                     let eachSession = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String , email: aSessionDict["OwnerEmail"] as? String , phone: aSessionDict["OwnerContactNumber"] as? String)
@@ -45,9 +45,16 @@ class ViewController: UIViewController {
         Observable.just(DataManager.sharedInstance.sections)
             .bind(to: sessionTw.rx.items(dataSource: dataSource))
             .disposed(by: disposalBg)
-     
+        
+        sessionTw.rx.itemSelected
+            .subscribe(onNext: {  indexPath in
+                let section =  DataManager.sharedInstance.sections[indexPath.section]
+                let aSessionDict = section.items [indexPath.row]
+                 let session = Session(subject: aSessionDict["Subject"] as? String, owner: aSessionDict["Owner"] as? String, accountName: aSessionDict["AccountName"] as? String, location: aSessionDict["Location"] as? String, activityStartDate: aSessionDict["ActivityStartDate"] as? String, activityEndDate: aSessionDict["ActivityEndDate"] as? String , email: aSessionDict["OwnerEmail"] as? String , phone: aSessionDict["OwnerContactNumber"] as? String)
+                DataManager.sharedInstance.selectedSession = session
+                
+            }).disposed(by: disposalBg)
 
-    
     }
 
         

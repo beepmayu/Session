@@ -17,7 +17,6 @@ class DetailsViewController : FormViewController {
     override func viewDidLoad() {
         print("loaded view")
         super.viewDidLoad()
-        loadInputDisplay()
      
         navigationOptions = RowNavigationOptions.Enabled.union(.StopDisabledRow)
         // Enables smooth scrolling on navigation to off-screen rows
@@ -29,14 +28,24 @@ class DetailsViewController : FormViewController {
         let rightButtonItem1 =  UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(rightButtonAction(sender:)))
         self.navigationItem.rightBarButtonItem = rightButtonItem1
         
+       
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        form.removeAll()
+        loadInputDisplay()
     }
     @objc func rightButtonAction(sender: UIBarButtonItem){
         self.editableForm = !editableForm
         
     }
     
+
     func loadInputDisplay(){
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
@@ -119,10 +128,11 @@ class DetailsViewController : FormViewController {
 
             }
             
-            +++ Section("Invitees")
-            
+           var section  =  Section()
+            form +++ section
             <<< MultipleSelectorRow<String>() {
                 $0.title = "Invitees"
+                $0.baseCell.backgroundColor = UIColor.init("E6E6E6")
                 $0.options = DataManager.sharedInstance.defaultedInvitees
                     .map{ invitee -> String in
                         return invitee["name"] as? String ??  ""
@@ -136,12 +146,52 @@ class DetailsViewController : FormViewController {
                 let objectSet = Set(values.map { $0 })
                 $0.value = objectSet
                 
+            
+                }.onPresent { from, to in
+                    to.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add(\(selectedSession.invitees.count))", style: .plain, target: self, action: #selector(DetailsViewController.multipleSelectorDone(_:)))
+                    let _ = to.view
+                    to.tableView?.isUserInteractionEnabled = true   // <-------------
+                    
                 }
+                
+                .onChange({ value in
+                  DataManager.sharedInstance.selectedSession!.invitees =  [Invitee]()
+                    for each in  DataManager.sharedInstance.defaultedInvitees{
+                        let name = each["name"] as! String
+                        let newVa = value.baseValue as! Set<String>
+                        if newVa.contains(name){
+                            let invitee = ["name" : name , "jobTitle": each["jobTitle"] as! String]
+                            DataManager.sharedInstance.selectedSession!.invitees.append(invitee as Invitee)
+                        }
+                    
+                        
+                    }
+                    
+                })
+        
+        
+                for each in DataManager.sharedInstance.selectedSession!.invitees
+                    {
+                        let label = LabelRow()
+                        let value = "\(each["name"] as! String) \n \(each["jobTitle"] as! String)"
+                        label.title = value
+                        section += [label]
+       
+                }
+        
+        
+        self.tableView.reloadData()
+
+        
+            
+        
         
         
         
     }
     
-    
+    @objc func multipleSelectorDone(_ item:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
     
 }

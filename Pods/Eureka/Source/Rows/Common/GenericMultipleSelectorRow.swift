@@ -46,7 +46,7 @@ open class GenericMultipleSelectorRow<T, Cell: CellType>: Row<Cell>, PresenterRo
     required public init(tag: String?) {
         super.init(tag: tag)
         displayValueFor = { (rowValue: Set<T>?) in
-            return rowValue?.map({ String(describing: $0) }).sorted().joined(separator: ", ")
+            return ""//rowValue?.map({ String(describing: $0) }).sorted().joined(separator: ", ")
         }
         presentationMode = .show(controllerProvider: ControllerProvider.callback {
                 return MultipleSelectorViewController<GenericMultipleSelectorRow<T,Cell>>()
